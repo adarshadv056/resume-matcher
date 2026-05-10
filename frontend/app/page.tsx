@@ -37,32 +37,48 @@ export default function Home() {
         style={{ width: "100%", height: "120px", marginBottom: "20px" }}
       />
 
-      <button onClick={handleAnalyze}>Analyze</button>
+      <button className="border rounded p-2 cursor-pointer" onClick={handleAnalyze}>Analyze</button>
 
       {result && (
         <div style={{ marginTop: "30px" }}>
           <h2>Match Score: {result.match_score}%</h2>
 
-          <h3>Missing Skills</h3>
-          <ul>
-            {result.missing_skills.map((skill: string) => (
-              <li key={skill}>{skill}</li>
-            ))}
-          </ul>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: "24px", marginTop: "20px" }}>
+            <div>
+              <h3><b>Missing Skills</b></h3>
+              <ul style={{ color: "red", listStyleType: "disc", paddingLeft: "20px" }}>
+                {result.missing_skills.map((skill: string) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+            </div>
 
-          <h3>Resume Skills</h3>
-          <ul>
-            {result.resume_skills.map((skill: string) => (
-              <li key={skill}>{skill}</li>
-            ))}
-          </ul>
+            <div>
+              <h3><b>Resume Skills</b></h3>
+              <ul style={{ color: "green", listStyleType: "disc", paddingLeft: "20px" }}>
+                {result.resume_skills.map((skill: string) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+            </div>
 
-          <h3>Job Skills</h3>
-          <ul>
-            {result.job_skills.map((skill: string) => (
-              <li key={skill}>{skill}</li>
-            ))}
-          </ul>
+            <div>
+              <h3><b>Job Skills</b></h3>
+              <ul style={{ color: "blue", listStyleType: "disc", paddingLeft: "20px" }}>
+                {result.job_skills.map((skill: string) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3><b>Top Matches</b></h3>
+              <ul style={{ color: "purple", listStyleType: "disc", paddingLeft: "20px" }}>
+                {result.top_matches.map((sent: string, index: number) => (
+                  <li key={index}>{sent}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       )}
     </div>
