@@ -16,7 +16,14 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={
+    r"/*": {
+        "origins": [
+            "http://localhost:3000", 
+            "https://resume-matcher-steel.vercel.app"
+        ]
+    }
+})
 
 nltk.download("punkt", quiet=True)
 nltk.download("punkt_tab", quiet=True)
