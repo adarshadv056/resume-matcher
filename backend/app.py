@@ -203,5 +203,9 @@ def analyze():
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
+@app.route('/health')
+def health_check():
+    return "Healthy", 200
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
