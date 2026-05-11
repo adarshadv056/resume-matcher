@@ -60,7 +60,8 @@ CLEAN_MAP = {
     "next.js": "nextjs"
 }
 
-word2vec_model = api.load("word2vec-google-news-300")
+# word2vec_model = api.load("word2vec-google-news-300")
+word2vec_model = api.load("glove-wiki-gigaword-50")
 lemmatizer = WordNetLemmatizer()
 
 def clean_html(text):
@@ -152,8 +153,10 @@ def extract_skills(text):
     skills = []
     for word, tag in tagged:
         if tag.startswith("NN") and word not in STOP_SKILLS:
-            mapped_skill = REVERSE_NORMALIZE.get(word, word)
-            skills.append(mapped_skill)
+            if word in REVERSE_NORMALIZE:
+                skills.append(word)
+            elif word in NORMALIZE:
+                skills.append(word)
             
     return set(skills)
 
