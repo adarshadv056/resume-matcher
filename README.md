@@ -44,5 +44,5 @@ An intelligent, full-stack application that evaluates resumes against job descri
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/yourusername/resume-matcher.git](https://github.com/yourusername/resume-matcher.git)
+git clone [https://github.com/adarshadv056/resume-matcher.git](https://github.com/adarshadv056/resume-matcher.git)
 cd resume-matcher
